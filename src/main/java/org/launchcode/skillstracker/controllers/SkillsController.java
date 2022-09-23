@@ -2,8 +2,7 @@ package org.launchcode.skillstracker.controllers;
 
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @ResponseBody
@@ -59,12 +58,16 @@ public class SkillsController {
                 "<option value = 'html'>html</option>" +
                 "</select>" +
                 "</br></br>" +
-                "<form action = '/page' method = 'post'>" + // submit a request to /page
+                "<form action = '/page' method = 'post'>" + // submit a request to /page or does it
                 "<input type = 'submit' value = 'Test' >" +
                 "</form>" +
                 "</body>" +
                 "</html>";
     }
 
+    @RequestMapping(method = {RequestMethod.GET, RequestMethod.POST}, value="page")
+    public String pageBuilder(@RequestParam String name, String lang1, String lang2, String lang3){
+        return "name" + name + lang2;
+    }
 
 }
